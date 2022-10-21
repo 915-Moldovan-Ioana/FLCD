@@ -1,0 +1,21 @@
+Syntactical rules:
+
+<program> ::= { <stmtlist> };
+<declaration> ::= <identifier> is <type>;
+<type> ::= char | integer | string | boolean;
+<stmtlist> ::= <stmt> | <stmt> ; <stmtlist>;
+<stmt> ::= <simplestmt> | <structstmt>;
+<simplestmt> ::= <assignstmt> | <iostmt>;
+<assignstmt> ::= <identifier> = <expression>;
+<expression> ::= <expression> + <term> | <expression> - <term> | <term>;
+<term> ::= <term> * <factor> | <term> % <factor> | <term> / <factor> | <factor>;
+<factor> ::= ( <expression> ) | <identifier> | <integer>;
+<iostmt> ::= give <identifier> | see <string> | see <expression> | see <char>;
+<arrayDeclaration> ::= <declaration> [ <integer> ];
+<structstmt> ::= <checkstmt> | <whilestmt>;
+<logicalop> ::= and | or;
+<checkStmt> ::= check ( <condlist> ) { <stmtlist> } | check <condlist> { <stmtlist> } else { <stmtlist> };
+<whilestmt> ::= while ( <condlist> ) { <stmtlist> };
+<condlist> ::= <condition> | <condition> <logicalop> <condlist>;
+<condition> ::= <expression> <relation> <expression>;
+<relation> ::= < | <= | == | != | >= | >;
