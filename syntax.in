@@ -17,5 +17,5 @@ Syntactical rules:
 <checkStmt> ::= check ( <condlist> ) { <stmtlist> } | check <condlist> { <stmtlist> } else { <stmtlist> };
 <whilestmt> ::= while ( <condlist> ) { <stmtlist> };
 <condlist> ::= <condition> | <condition> <logicalop> <condlist>;
-<condition> ::= <expression> <relation> <expression>;
+<condition> ::= <expression> <relation> <expression> | <boolean>;
 <relation> ::= < | <= | == | != | >= | >;
