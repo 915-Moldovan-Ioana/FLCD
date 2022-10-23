@@ -1,0 +1,49 @@
+Alphabet:
+a.Upper (A-Z) and lower case letters (a-z) of the English alphabet;
+b.Underline character '_';
+c.Decimal digits (0-9);
+
+1.Lexic: 
+a.Special symbols, representing:
+    - operators: + - * / % = < <= == >= !=
+    - separators: ( ) [ ] { } : ; space
+    - reserved words: 
+    	-array 
+    	-while
+    	-const 
+    	-do 
+    	-else 
+    	-check
+    	-integer
+    	-string
+    	-char
+    	-boolean
+    	-true
+    	-false
+    	-is
+    	-give
+    	-see 
+b.identifiers 
+    - a sequence of letters and digits, such that the first character is always a letter: 		
+	<aux> ::= <letter> | <digit>;
+    	<seq> ::= <aux> | <seq> <aux>;
+    	<identifier> ::= <letter> | <letter> <seq>;
+    	<letter> ::= a | … | z | A | … | Z;
+    	<digit> ::= 0 | 1 | … | 9;
+
+c.constants 
+    1.integer:
+	<nonZeroDigit> ::= 1 | … | 9;
+	<digit> ::= 0 | <nonZeroDigit>;
+	<sign> ::= + | -;
+	<digitSeq> ::= <digit> | <digit> <digitSeq>;
+	<number> ::= <nonZeroDigit> | <nonZeroDigit> <digitSeq>;
+	<integer> ::= 0 | <number> | <sign> <number>;
+    2.character: 
+    	<char> ::= ‘<letter>’ | ‘<digit>’;
+    3.string:
+	<character> ::= <letter> | <digit>;
+    	<charSeq> ::= <character> | <character> <charSeq>;
+    	<string> ::= “<charSeq>”;
+    4.boolean:
+	<boolean> ::= true | false;
