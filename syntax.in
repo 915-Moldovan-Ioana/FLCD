@@ -10,7 +10,7 @@ Syntactical rules:
 <expression> ::= <expression> + <term> | <expression> - <term> | <term>;
 <term> ::= <term> * <factor> | <term> % <factor> | <term> / <factor> | <factor>;
 <factor> ::= ( <expression> ) | <identifier> | <integer>;
-<iostmt> ::= give <identifier> | see <string> | see <expression> | see <char>;
+<iostmt> ::= give <identifier> | see <string> | see <expression> | see <char> | see <boolean>;
 <arrayDeclaration> ::= <declaration> [ <integer> ];
 <structstmt> ::= <checkstmt> | <whilestmt>;
 <logicalop> ::= and | or;
