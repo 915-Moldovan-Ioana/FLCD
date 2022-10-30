@@ -45,4 +45,23 @@ public class HashTable {
         return at(value);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append("Symbol table: \n");
+
+        for (int i = 0; i < size; i++) {
+            result.append(i).append(": ");
+            if (!hashtable.get(i).isEmpty()) {
+                for (String value : hashtable.get(i)) {
+                    result.append(value).append(", ");
+                }
+                result.setLength(result.length() - 2);
+            }
+            result.append("\n");
+        }
+        
+        return result.toString();
+    }
+
 }
