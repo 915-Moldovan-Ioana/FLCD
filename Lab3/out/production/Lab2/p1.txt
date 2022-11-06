@@ -1,0 +1,15 @@
+a is integer;
+b is integer;
+c is integer;
+max is integer;
+give a;
+give b;
+give c;
+max = a;
+check ( a > b and a > c )
+	max = a;
+check ( b > a and b > c )
+	max = b;
+check ( c > a and c > b )
+	max = c;
+see "Max_is:_" + max;
