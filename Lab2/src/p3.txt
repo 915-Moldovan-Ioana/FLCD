@@ -1,0 +1,12 @@
+n is integer;
+copy is integer;
+l is integer [ ];
+sum is integer;
+sum = 0;
+copy = 0;
+give n;
+while ( copy < n ) {
+	give l [ copy ];
+	sum = sum + l [ copy ];
+}
+see l;

@@ -1,0 +1,17 @@
+n is integer;
+n is integer;
+d = 2;
+prime is boolean;
+prime = true;
+give n;
+check ( n <= 2 or ( n > 2 and n % 2 == 0 ) )
+	prime = false;
+while ( d < n / 2 ) {
+	check ( n % d == 0 )
+		prime = false;
+	d = d + 2;
+}
+check ( prime == false )
+	see "The_number_is_not_prime";
+else
+	see "The_number_is_prime";
