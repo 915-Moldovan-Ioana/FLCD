@@ -1,0 +1,30 @@
+%{
+    #include <stdio.h>
+    #include <string.h>
+    int currLine = 1;
+%}
+
+%option noyywrap
+
+identifier         ^[a-zA-Z][a-zA-Z0-9_]*$
+number            ^(0|[+-]?[1-9][0-9]*)$
+character          \'[a-zA-Z0-9]\'
+string             \"[^\"]*\"
+
+%%
+
+"+"|"-"|"*"|"/"|"%"|"="|"=="|"<"|">"|"<="|">="        printf("Operator: %s\n", yytext);
+
+"{"|"}"|"("|")"|"["|"]"|":"|";"         printf("Separator: %s\n", yytext);
+
+"array"|"while"|"const"|"do"|"else"|"check"|"integer"|"string"|"char"|"boolean"|"true"|"false"|"is"|"give"|"see"         printf("Reserved word: %s\n", yytext); 
+
+{identifier}        printf("Identifier: %s\n", yytext);
+{integer}           printf("Number: %s\n", yytext, atoi(yytext));
+{string}            printf("String: %s\n", yytext);
+{character}         printf("Character: %s\n", yytext);
+
+[ \t+]          {}
+[\n]+           {currLine++;}
+
+%%
