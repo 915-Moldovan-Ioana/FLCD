@@ -7,22 +7,56 @@
 %option noyywrap
 
 identifier         ^[a-zA-Z][a-zA-Z0-9_]*$
-number            ^(0|[+-]?[1-9][0-9]*)$
+number             ^(0|[+-]?[1-9][0-9]*)$
 character          \'[a-zA-Z0-9]\'
-string             \"[^\"]*\"
+stringCh           \"[^\"]*\"
+boolean            true|false
 
 %%
 
-"+"|"-"|"*"|"/"|"%"|"="|"=="|"<"|">"|"<="|">="        printf("Operator: %s\n", yytext);
+"+"         {printf("Operator: %s\n", yytext);return plus;}
+"-"         {printf("Operator: %s\n", yytext);return minus;}
+"*"         {printf("Operator: %s\n", yytext);return mul;}
+"/"         {printf("Operator: %s\n", yytext);return div;}
+"%"         {printf("Operator: %s\n", yytext);return mod;}
+"="         {printf("Operator: %s\n", yytext);return assign;}
+"=="        {printf("Operator: %s\n", yytext);return equal;}
+"!="        {printf("Operator: %s\n", yytext);return notEqual;}
+"<"         {printf("Operator: %s\n", yytext);return less;}
+">"         {printf("Operator: %s\n", yytext);return greater;}
+"<="        {printf("Operator: %s\n", yytext);return lessOrEqual;}
+">="        {printf("Operator: %s\n", yytext);return greaterOrEqual;}
 
-"{"|"}"|"("|")"|"["|"]"|":"|";"         printf("Separator: %s\n", yytext);
+"{"         {printf("Separator: %s\n", yytext);return openCurlyBracket;}
+"}"         {printf("Separator: %s\n", yytext);return closeCurlyBracket;}
+"("         {printf("Separator: %s\n", yytext);return openRoundBracket;}
+")"         {printf("Separator: %s\n", yytext);return closeRoundBracket;}
+"["         {printf("Separator: %s\n", yytext);return openSquareBracket;}
+"]"         {printf("Separator: %s\n", yytext);return closeSquareBracket;}
+":"         {printf("Separator: %s\n", yytext);return colon;}
+";"         {printf("Separator: %s\n", yytext);return semicolon;}
 
-"array"|"while"|"const"|"do"|"else"|"check"|"integer"|"string"|"char"|"boolean"|"true"|"false"|"is"|"give"|"see"         printf("Reserved word: %s\n", yytext); 
+"array"         {printf("Reserved word: %s\n", yytext);return array;} 
+"while"         {printf("Reserved word: %s\n", yytext);return while;}
+"const"         {printf("Reserved word: %s\n", yytext);return const;} 
+"do"            {printf("Reserved word: %s\n", yytext);return do;} 
+"else"          {printf("Reserved word: %s\n", yytext);return else;} 
+"check"         {printf("Reserved word: %s\n", yytext);return if;}
+"integer"       {printf("Reserved word: %s\n", yytext);return int;}
+"string"        {printf("Reserved word: %s\n", yytext);return string;}
+"char"          {printf("Reserved word: %s\n", yytext);return char;}
+"bool"       {printf("Reserved word: %s\n", yytext);return bool;}
+"true"          {printf("Reserved word: %s\n", yytext);return true;}
+"false"         {printf("Reserved word: %s\n", yytext);return false;}
+"is"            {printf("Reserved word: %s\n", yytext);return is;}
+"give"          {printf("Reserved word: %s\n", yytext);return read;}
+"see"           {printf("Reserved word: %s\n", yytext);return write;}
 
-{identifier}        printf("Identifier: %s\n", yytext);
-{integer}           printf("Number: %s\n", yytext, atoi(yytext));
-{string}            printf("String: %s\n", yytext);
-{character}         printf("Character: %s\n", yytext);
+{identifier}        {printf("Identifier: %s\n", yytext);return identifier;}
+{integer}           {printf("Number: %s\n", yytext);return number;}
+{string}            {printf("String: %s\n", yytext);return stringCh;}
+{character}         {printf("Character: %s\n", yytext);return character;}
+{boolean}           {printf("Character: %s\n", yytext);return boolean;}
 
 [ \t+]          {}
 [\n]+           {currLine++;}
